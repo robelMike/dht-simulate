@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
+from db import db
 
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ def postrandom():
 	temp = {'temperature': '23'}
 	db.session.add(temp)
 	db.session.commit()
-	
+
 	return jsonify(temp)
 
 
