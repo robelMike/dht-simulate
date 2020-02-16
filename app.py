@@ -5,6 +5,8 @@ from db import db
 
 app = Flask(__name__)
 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 class fixdb(db.Model):
 	__tablename__= 'dht'
 
