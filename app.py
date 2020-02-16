@@ -24,7 +24,7 @@ def postrandom():
 
 
 if __name__ == '__main__':
-	#db.init_app(app)
+	db.init_app(app)
 	def create_tables():
 		db.create_all()
 
