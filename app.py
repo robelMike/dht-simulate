@@ -34,14 +34,7 @@ def postrandom():
 	test_temp = fixdb(temp)
 	test_temp.add_to_db()
 	return jsonify(temp)
-
-@app.route('/list', methods=['GET'])
-def postrandom():
-	temp = {'temperature': '23'}
-	db.create_all() 
-	test_temp = fixdb(temp)
-	test_temp.add_to_db()
-	return jsonify(temp)
+	
 
 
 if __name__ == '__main__':
