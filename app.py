@@ -29,6 +29,10 @@ class fixdb(db.Model):
 		db.session.add(self)
 		db.session.commit()
 
+	def delete_from_db(self):
+		db.session.remove(self)
+		db.session.commit()
+
 	def __repr__(self):
 		return {'temp:' + self.temp, 'name:' + self.name}
 
@@ -50,6 +54,13 @@ def list():
 		print(m)
 
 	return {"list": m}
+	 
+@app.route('/delete', methods=['delete'])
+def delete():
+
+	object = db.session.query(fixdb.temp, fixdb.name).all()
+	fixdb.delete_from_db(object)
+	return {'message:' 'f{object} is deleted'}
 	 
 
 if __name__ == '__main__':
