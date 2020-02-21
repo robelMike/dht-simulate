@@ -81,9 +81,9 @@ def input():
 
 @app.route('/dht', methods=['GET'])
 def getdht():
-	data = request.get.json()
-	temperature = data['temperature']
-	return {'message:', 'temperature'}
+	data = request.get_json()
+	temp = data['temperature']
+	return jsonify(temp)
 
 
 	 
