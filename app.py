@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
+import requests
 from flask_sqlalchemy import SQLAlchemy
 from db import db
 
@@ -37,11 +38,13 @@ class fixdb(db.Model):
 def create_tables():
 	db.create_all()
 
-@app.route('/create', methods=['POST'])
+@app.route('/create', methods=['GET'])
 def postrandom():
-	data = request.get_json()
-	temp = data['temp']
-	name = data['name']
+	r = requests.post("http://192.168.0.34:5000/dht")
+	data = r.json()
+	temp = data['temperature']
+	name = data['humidity']
+	print(f"temp: {temp} hum: {name}")
 	test_temp = fixdb(temp, name)
 	test_temp.add_to_db()
 	print(temp)
